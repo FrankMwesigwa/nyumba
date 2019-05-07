@@ -1,23 +1,20 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+import express from 'express';
+import { connect } from 'mongoose';
+import { urlencoded, json } from 'body-parser';
+import router from './routes';
+import { mongoURI as db } from './config/keys';
+
 const app = express();
-// Bodyparser middleware
-app.use(
-  bodyParser.urlencoded({
-    extended: false
-  })
-);
-app.use(bodyParser.json());
-// DB Config
-const db = require("./config/keys").mongoURI;
-// Connect to MongoDB
-mongoose
-  .connect(
-    db,
-    { useNewUrlParser: true }
-  )
-  .then(() => console.log("MongoDB successfully connected"))
+app.use(urlencoded({ extended: false }));
+app.use(json());
+
+connect(db, { useNewUrlParser: true })
+  // eslint-disable-next-line no-console
+  .then(() => console.log('MongoDB successfully connected'))
+  // eslint-disable-next-line no-console
   .catch(err => console.log(err));
-const port = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
+
+app.use(router);
+const port = process.env.PORT || 9000;
+// eslint-disable-next-line no-console
 app.listen(port, () => console.log(`Server up and running on port ${port} !`));

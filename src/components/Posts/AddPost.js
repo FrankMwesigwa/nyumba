@@ -12,12 +12,11 @@ class AddPost extends Component {
       published_year: '',
       publisher: ''
     }
- 
-  onChange = (e) => {
-    const state = this.state
-    state[e.target.name] = e.target.value;
-    this.setState(state);
-  }
+
+    onChangehandler = (e) => {
+        this.setState({[e.target.name] : e.target.value})
+    }
+
 
   onSubmit = (e) => {
     e.preventDefault();
