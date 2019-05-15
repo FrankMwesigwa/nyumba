@@ -1,21 +1,23 @@
 import React , { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import AddPost from './components/Posts/AddPost'
-import PostsList from './components/Posts/PostsList'
-import EditPost from './components/Posts/EditPost'
-import PostsDetails from './components/Posts/PostsDetail'
+
+import Navbar from "./layout/Navbar";
+import Landing from "./layout/Landing";
+
+import Register from "./auth/Register";
+import Login from "./auth/Login";
 
 class App extends Component {
 
   render (){
     return (
       <BrowserRouter>
-      <div>
-        <Route exact path='/' component={PostsList} />
-        <Route path='/addPost' component={AddPost} />
-        <Route path='/editPost/:id' component={EditPost} />
-        <Route path='/postDetails/:id' component={PostsDetails} />
-      </div>
+      <div className="App">
+          <Navbar />
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+        </div>
       </BrowserRouter>
     );
 

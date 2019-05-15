@@ -40,7 +40,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "nodemon server/index.js --exec babel-node --presets babel-preset-env"
+    "server": "nodemon server/index.js --exec babel-node --presets babel-preset-env",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -66,5 +67,6 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "nodemon": "^1.19.0"
-  }
+  },
+  "proxy": "http://localhost:9001"
 }
