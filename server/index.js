@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended:true }));
 app.use(passport.initialize());
 app.use('/api', router);
 
-const port = process.env.PORT;
+const port = 9006;
 
 mongoose.Promise = global.Promise;
 mongoose.connect( process.env.DATABASE_URL, { useNewUrlParser: true } );
